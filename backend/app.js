@@ -14,11 +14,6 @@ const frontendPath = path.join(__dirname, "../frontend/dist");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// api Routes
-// api Routes
-
-app.use(express.static(frontendPath));
-
 app.use(
   cors({
     origin: "*",
@@ -27,10 +22,12 @@ app.use(
   }),
 );
 
-app.get(/.*/, (_, res) => {
-  res.sendFile(path.join(frontendPath, "index.html"));
-});
-
 app.use(API_VERSION, (_, res) => {
   res.send("🚀 API is working");
+});
+
+app.use(express.static(frontendPath));
+
+app.get(/.*/, (_, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
