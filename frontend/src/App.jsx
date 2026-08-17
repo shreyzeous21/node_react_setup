@@ -1,21 +1,25 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Header from './components/layouts/Header'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Header from "./components/layouts/Header";
+import HomePage from "./pages/HomePage";
+import ContactPage from "./pages/contact/ContactPage";
+import Footer from "./components/layouts/Footer";
+import { Toaster } from "./components/ui/sonner";
 
 export default function App() {
   return (
     <BrowserRouter>
-
-      <main className='bg-black min-h-screen text-white'>
       <Header />
+      <main className="py-6">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={"not found"} />
         </Routes>
-      {/* <Footer /> */}
       </main>
-
+      <Footer />
+      <Toaster position="top-right" richColors />
     </BrowserRouter>
-  )
+  );
 }

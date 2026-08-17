@@ -13,7 +13,16 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(import.meta.dirname, "./src"),
     },
   },
+  // server: {
+  //   proxy: {
+  //     "/socket.io": {
+  //       target: "http://localhost:8000/",
+  //       ws: true,
+  //       changeOrigin: true,
+  //     },
+  //   },
+  // },
 });
